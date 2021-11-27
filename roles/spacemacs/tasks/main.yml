@@ -1,11 +1,11 @@
-- name: install emacs26
+- name: install emacs27
   become: yes
   block:
   - apt_repository:
       repo: ppa:kelleyk/emacs
   - apt:
       name:
-      - emacs26-nox
+      - emacs27-nox
       - git-flow
       - ispell
 

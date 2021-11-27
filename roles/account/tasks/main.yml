@@ -1,0 +1,16 @@
+- name: Set timezone
+  become: yes
+  command: timedatectl set-timezone Asia/Tokyo
+
+- name: bashrc
+  blockinfile:
+    dest: "{{ansible_env.HOME}}/.bashrc"
+    create: yes
+    block: |
+      {{bashrc_contents}}
+
+- name: copy tmux.conf file
+  copy:
+    src: tmux.conf
+    dest: "{{ansible_env.HOME}}/.tmux.conf"
+    mode: '0644'

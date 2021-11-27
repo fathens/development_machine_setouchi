@@ -1,0 +1,23 @@
+- name: install emacs26
+  become: yes
+  block:
+  - apt_repository:
+      repo: ppa:kelleyk/emacs
+  - apt:
+      name:
+      - emacs26-nox
+      - git-flow
+      - ispell
+
+- name: clone spacemacs
+  git:
+    repo: "{{spacemacs_repo}}"
+    dest: "{{ansible_env.HOME}}/.emacs.d"
+    version: develop
+    update: no
+
+- name: copy dot.spacemacs file
+  copy:
+    src: dot.spacemacs
+    dest: "{{ansible_env.HOME}}/.spacemacs"
+    mode: '0644'

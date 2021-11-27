@@ -1,0 +1,4 @@
+bashrc_contents: |
+  {% raw %}PS1='\[\033[01;32m\]\u@\h[\D{%Y/%m/%d %H:%M:%S}]:\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]\n\$ '{% endraw %}
+
+  export PROMPT_COMMAND='history -a; echo'

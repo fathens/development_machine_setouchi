@@ -1,0 +1,20 @@
+pkgs:
+  - libssl-dev
+  - pkg-config
+  - build-essential
+
+components:
+  - rustfmt
+  - clippy
+  - rls
+  - rust-analysis
+  - rust-src
+
+crates:
+  - cargo-outdated
+  - cargo-audit
+  - cargo-edit
+  - git-delta
+  - bottom
+  - exa
+  - ripgrep

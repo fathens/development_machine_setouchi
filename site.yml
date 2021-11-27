@@ -11,3 +11,4 @@
   roles:
   - account
   - spacemacs
+  - rust

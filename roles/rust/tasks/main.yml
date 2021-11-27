@@ -1,0 +1,30 @@
+- name: Install apt packages
+  become: yes
+  apt:
+    update_cache: yes
+    state: latest
+    name: "{{ pkgs }}"
+
+- name: Install rustup
+  command: bash -l -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+  args:
+    creates: "{{ ansible_env.HOME }}/.rustup"
+
+- name: Install components
+  command: bash -l -c "rustup component add {{ components | join(' ') }}"
+
+- name: Install rust-analyzer
+  command: bash -l -c "rustup +nightly component add rust-analyzer-preview"
+
+- name: Install crates
+  command: bash -l -c "cargo install {{ item }}"
+  with_items: "{{ crates }}"
+
+- name: Use delta as default
+  command: |
+    git config --global pager.diff delta
+    git config --global pager.show delta
+    git config --global pager.log delta
+    git config --global pager.reflog delta
+    git config --global interactive.diffFilter 'delta --color-only'
+    git config --global delta.syntax-theme GitHub

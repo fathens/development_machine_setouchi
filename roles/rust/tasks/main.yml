@@ -21,10 +21,11 @@
   with_items: "{{ crates }}"
 
 - name: Use delta as default
-  command: |
-    git config --global pager.diff delta
-    git config --global pager.show delta
-    git config --global pager.log delta
-    git config --global pager.reflog delta
-    git config --global interactive.diffFilter 'delta --color-only'
-    git config --global delta.syntax-theme GitHub
+  command: bash -l -c "git config --global {{ item }}"
+  with_items:
+    - pager.diff delta
+    - pager.show delta
+    - pager.log delta
+    - pager.reflog delta
+    - interactive.diffFilter 'delta --color-only'
+    - delta.syntax-theme GitHub

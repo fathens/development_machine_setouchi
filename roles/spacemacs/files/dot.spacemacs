@@ -332,6 +332,11 @@ you should place your code here."
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
 
+  ;; According to https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (setq lsp-signature-auto-activate nil)
+
   (add-hook 'vue-mode-hook
             (lambda ()
               (set-face-background 'mmm-default-submode-face nil)))

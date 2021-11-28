@@ -16,8 +16,9 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
   end
   config.vm.provision "ansible" do |ansible|
-    ansible.verbose = 'false'
+    ansible.verbose = "false"
     ansible.playbook = "site.yml"
+    ansible.galaxy_role_file = "requirements.yml"
     ansible.galaxy_roles_path = "~/.ansible/roles"
   end
 end

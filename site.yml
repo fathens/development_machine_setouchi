@@ -3,7 +3,6 @@
   - name: Verify Ansible version requirements.
     assert:
       that: "ansible_version.full is version_compare('2.8', '>=')"
-  remote_user: vagrant
   vars:
     github_account:
       name: 沢谷 邦夫

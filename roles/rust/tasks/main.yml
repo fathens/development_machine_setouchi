@@ -10,6 +10,13 @@
   args:
     creates: "{{ ansible_env.HOME }}/.rustup"
 
+- file:
+    path: ~/.local/share/bash-completion/completions
+    state: directory
+
+- name: rustup completion
+  command: bash -l -c "rustup completions bash > ~/.local/share/bash-completion/completions/rustup"
+
 - name: Install components
   command: bash -l -c "rustup component add {{ components | join(' ') }}"
 

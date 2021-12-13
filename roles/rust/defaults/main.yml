@@ -2,6 +2,10 @@ pkgs:
   - libssl-dev
   - pkg-config
   - build-essential
+  - clang
+  - libssl-dev
+  - llvm
+  - libudev-dev
 
 components:
   - rustfmt
